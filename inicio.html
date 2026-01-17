@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Liz Martínez</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<div class="contenedor">
+
+  <!-- fondo azul -->
+  <img src="PORTFOLIO 1 .jpg" class="fondo">
+
+  <!-- tu foto a color -->
+  <img src="portfolio 2.png" class="foto-hover" onclick="abrirFoto()">
+
+  <!-- carpetas -->
+  <img src="carpeta-afiches.png" class="carpeta c1" onclick="abrirCarpeta1()">
+<img src="carpeta-editorial.png" class="carpeta c2" onclick="abrirCarpeta2()">
+<img src="carpeta-ux.png" class="carpeta c3" onclick="abrirCarpeta3()">
+<img src="carpeta-branding.png" class="carpeta c4" onclick="abrirCarpeta4()">
+<img src="carpeta-packaging.png" class="carpeta c5" onclick="abrirCarpeta5()">
+
+
+</div>
+
+<!-- MODAL IMAGEN GRANDE -->
+<div id="modal" class="modal">
+  <img src="cerrar.png" class="cerrar" onclick="cerrarFoto()">
+  <img src="curriculum.png" class="modal-img">
+</div>
+
+<!-- MODAL CARPETA -->
+<div id="modalCarpeta1" class="modal-carpeta">
+
+  <div class="marco-carpeta">
+    <img src="archivos abrir.png" class="fondo-carpeta">
+
+    <img src="jordan.png" class="trabajo t1" onclick="abrirTrabajo(this.src)">
+    <img src="grappamiel.png" class="trabajo t2" onclick="abrirTrabajo(this.src)">
+    <img src="spotify.png" class="trabajo t3" onclick="abrirTrabajo(this.src)">
+    <img src="ruben fontana.png" class="trabajo t4" onclick="abrirTrabajo(this.src)">
+    <img src="feria del libro.png" class="trabajo t5" onclick="abrirTrabajo(this.src)">
+  </div>
+
+  <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
+
+</div>
+<div id="modalCarpeta2" class="modal-carpeta">
+
+  <div class="marco-carpeta">
+    <img src="archivos abrir 4.png" class="fondo-carpeta">
+
+<a href="libro artista.pdf">
+  <img src="libro artista.png" class="trabajo c2-t1">
+</a>
+
+
+<a href="REVISTA ULTRA FINAL.pdf">
+  <img src="revista.png" class="trabajo c2-t2">
+</a>
+
+  </div>
+
+  <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
+
+</div>
+<div id="modalCarpeta3" class="modal-carpeta">
+
+  <div class="marco-carpeta">
+    <img src="archivos ux.png" class="fondo-carpeta">
+
+<a href="./Copia de pagina web coraza/inicio coraza.html">
+  <img src="ux1.png" class="trabajo c3-t1">
+</a>
+
+
+<a href="./ jQuery/onepage.html">
+  <img src="ux2.png" class="trabajo c3-t2">
+</a>
+
+  </div>
+
+  <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
+
+</div>
+
+<div id="modalCarpeta4" class="modal-carpeta">
+
+  <div class="marco-carpeta">
+    <img src="archivos abrir 2.png" class="fondo-carpeta">
+
+    <img src="koa logo.png" class="trabajo t9" onclick="abrirTrabajo(this.src)">
+    <img src="logo torres.png" class="trabajo t6" onclick="abrirTrabajo(this.src)">
+    <img src="limon logo idea.png" class="trabajo t7" onclick="abrirTrabajo(this.src)">
+    <img src="coraza logo.png" class="trabajo t8" onclick="abrirTrabajo(this.src)">
+   
+  </div>
+
+  <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
+
+</div>
+
+<div id="modalCarpeta5" class="modal-carpeta">
+
+  <div class="marco-carpeta">
+    <img src="archivos 3.png" class="fondo-carpeta">
+
+    <img src="calendario ruben fontana mockup.jpg" class="trabajo t10" onclick="abrirTrabajo(this.src)">
+    <img src="mockup libreta ruben fontana copia.jpg" class="trabajo t11" onclick="abrirTrabajo(this.src)">
+    <img src="packaging koa adulto.jpg" class="trabajo t12" onclick="abrirTrabajo(this.src)">
+    <img src="packaging koa niños.jpg" class="trabajo t13" onclick="abrirTrabajo(this.src)">
+    <img src="packaging limonada.jpg" class="trabajo t14" onclick="abrirTrabajo(this.src)">
+    <img src="packaging te.jpg" class="trabajo t15" onclick="abrirTrabajo(this.src)">
+    <img src="botella etiqueta hexagonal.jpg" class="trabajo t16" onclick="abrirTrabajo(this.src)">
+  </div>
+
+  <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
+
+</div>
+
+<script>
+let desdeCarpeta = false;
+let carpetaActual = null;
+
+/* ===== FOTO CV ===== */
+
+function abrirFoto() {
+  desdeCarpeta = false;
+  carpetaActual = null;
+  document.querySelector("#modal .modal-img").src = "curriculum.png";
+  document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarFoto() {
+  document.getElementById("modal").style.display = "none";
+
+  if (desdeCarpeta && carpetaActual) {
+    document.getElementById(carpetaActual).style.display = "flex";
+  }
+
+  desdeCarpeta = false;
+}
+
+
+
+/* ===== CARPETAS ===== */
+
+function abrirCarpeta1() {
+  carpetaActual = "modalCarpeta1";
+  document.getElementById("modalCarpeta1").style.display = "flex";
+}
+
+function abrirCarpeta2() {
+  carpetaActual = "modalCarpeta2";
+  document.getElementById("modalCarpeta2").style.display = "flex";
+}
+
+function abrirCarpeta3() {
+  carpetaActual = "modalCarpeta3";
+  document.getElementById("modalCarpeta3").style.display = "flex";
+}
+
+function abrirCarpeta4() {
+  carpetaActual = "modalCarpeta4";
+  document.getElementById("modalCarpeta4").style.display = "flex";
+}
+
+function abrirCarpeta5() {
+  carpetaActual = "modalCarpeta5";
+  document.getElementById("modalCarpeta5").style.display = "flex";
+}
+
+/* ===== CERRAR CUALQUIERA ===== */
+
+function cerrarCarpeta() {
+  if (carpetaActual) {
+    document.getElementById(carpetaActual).style.display = "none";
+    carpetaActual = null;
+  }
+}
+
+/* ===== TRABAJOS ===== */
+
+function abrirTrabajo(src) {
+  desdeCarpeta = true;
+
+  if (carpetaActual) {
+    document.getElementById(carpetaActual).style.display = "none";
+  }
+
+  document.getElementById("modal").style.display = "flex";
+  document.querySelector("#modal .modal-img").src = src;
+}
+</script>
+
+
+</body>
+</html>
