@@ -39,11 +39,11 @@
   <div class="marco-carpeta">
     <img src="archivos-abrir.png" class="fondo-carpeta">
 
-    <img src="jordan.png" class="trabajo t1" onclick="abrirTrabajo(this.src)">
-    <img src="grappamiel.png" class="trabajo t2" onclick="abrirTrabajo(this.src)">
-    <img src="spotify.png" class="trabajo t3" onclick="abrirTrabajo(this.src)">
-    <img src="ruben-fontana.png" class="trabajo t4" onclick="abrirTrabajo(this.src)">
-    <img src="feria-del-libro.png" class="trabajo t5" onclick="abrirTrabajo(this.src)">
+ <img src="jordan.png" class="trabajo t1" onclick="abrirTrabajo('jordan')">
+    <img src="grappamiel.png" class="trabajo t2" onclick="abrirTrabajo('grappamiel')">
+    <img src="spotify.png" class="trabajo t3" onclick="abrirTrabajo('spotify')">
+    <img src="ruben-fontana.png" class="trabajo t4" onclick="abrirTrabajo('ruben_fontana')">
+    <img src="feria-del-libro.png" class="trabajo t5" onclick="abrirTrabajo('feria_del_libro')">
   </div>
 
   <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
@@ -93,10 +93,11 @@
   <div class="marco-carpeta">
     <img src="archivos-abrir-2.png" class="fondo-carpeta">
 
-    <img src="koa-logo.png" class="trabajo t9" onclick="abrirTrabajo(this.src)">
-    <img src="logo-torres.png" class="trabajo t6" onclick="abrirTrabajo(this.src)">
-    <img src="limon-logo-idea.png" class="trabajo t7" onclick="abrirTrabajo(this.src)">
-    <img src="coraza-logo.png" class="trabajo t8" onclick="abrirTrabajo(this.src)">
+    <img src="koa-logo.png" class="trabajo t9" onclick="abrirTrabajo('koaa')">
+    <img src="logo-torres.png" class="trabajo t6" onclick="abrirTrabajo('logo_torres')">
+    <img src="limon-logo idea.png" class="trabajo t7" onclick="abrirTrabajo('limon_logo')">
+    <img src="coraza-logo.png" class="trabajo t8" onclick="abrirTrabajo('coraza_logo')">
+   
    
   </div>
 
@@ -109,14 +110,13 @@
   <div class="marco-carpeta">
     <img src="archivos-3.png" class="fondo-carpeta">
 
-    <img src="calendario-ruben-fontana-mockup.jpg" class="trabajo t10" onclick="abrirTrabajo(this.src)">
-    <img src="mockup-libreta-ruben-fontana-copia.jpg" class="trabajo t11" onclick="abrirTrabajo(this.src)">
-    <img src="packaging-koa-adulto.jpg" class="trabajo t12" onclick="abrirTrabajo(this.src)">
-    <img src="packaging-koa-ninos.jpg" class="trabajo t13" onclick="abrirTrabajo(this.src)">
-    <img src="packaging-limonada.jpg" class="trabajo t14" onclick="abrirTrabajo(this.src)">
-    <img src="packaging-te.jpg" class="trabajo t15" onclick="abrirTrabajo(this.src)">
-    <img src="botella-etiqueta-hexagonal.jpg" class="trabajo t16" onclick="abrirTrabajo(this.src)">
-  </div>
+  <img src="calendario-ruben-fontana-mockup.jpg" class="trabajo t10" onclick="abrirTrabajo('calendario_ruben')">
+    <img src="mockup-libreta-ruben-fontana-copia.jpg" class="trabajo t11" onclick="abrirTrabajo('mockup_libreta_ruben')">
+    <img src="packaging-koa-adulto.jpg" class="trabajo t12" onclick="abrirTrabajo('packaging_koa_adulto')">
+    <img src="packaging-koa-niños.jpg" class="trabajo t13" onclick="abrirTrabajo('packaging_koa_ninos')">
+    <img src="packaging-limonada.jpg" class="trabajo t14" onclick="abrirTrabajo('packaging_limonada')">
+    <img src="packaging-te.jpg" class="trabajo t15" onclick="abrirTrabajo('packaging_te')">
+    <img src="botella-etiqueta-hexagonal.jpg" class="trabajo t16" onclick="abrirTrabajo('botella_etiqueta_hexagonal')">
 
   <img src="cerrar.png" class="cerrar cerrar-carpeta" onclick="cerrarCarpeta()">
 
@@ -127,16 +127,34 @@ let desdeCarpeta = false;
 let carpetaActual = null;
 
 /* ===== FOTO CV ===== */
-
 function abrirFoto() {
+
+  const modal = document.getElementById("modal");
+  const galeria = document.querySelector(".galeria-modal");
+
+  // reset completo
+  galeria.innerHTML = "";
+  modal.style.display = "none";
+
   desdeCarpeta = false;
   carpetaActual = null;
-  document.querySelector("#modal .modal-img").src = "curriculum.png";
-  document.getElementById("modal").style.display = "flex";
+
+  const img = document.createElement("img");
+  img.src = "curriculum.png";
+  img.className = "modal-img img-principal";
+
+  galeria.appendChild(img);
+
+  modal.style.display = "flex";
 }
 
 function cerrarFoto() {
-  document.getElementById("modal").style.display = "none";
+
+  const modal = document.getElementById("modal");
+  const galeria = document.querySelector(".galeria-modal");
+
+  modal.style.display = "none";
+  galeria.innerHTML = "";
 
   if (desdeCarpeta && carpetaActual) {
     document.getElementById(carpetaActual).style.display = "flex";
@@ -144,7 +162,6 @@ function cerrarFoto() {
 
   desdeCarpeta = false;
 }
-
 
 
 /* ===== CARPETAS ===== */
@@ -185,15 +202,104 @@ function cerrarCarpeta() {
 
 /* ===== TRABAJOS ===== */
 
-function abrirTrabajo(src) {
+function abrirTrabajo(proyecto) {
+
   desdeCarpeta = true;
 
   if (carpetaActual) {
     document.getElementById(carpetaActual).style.display = "none";
   }
 
+  const imagenes = {
+    grappamiel: [
+      "grappamiel.png",
+      "explicacion8.png"
+    ],
+
+    jordan: [
+      "jordan.png",
+      "explicacion4.png"
+    ],
+
+   spotify: [
+  "spotify.png",
+  "explicacion2.png"
+],
+
+ruben_fontana: [
+  "ruben-fontana.png",
+  "explicacion1.png"
+],
+
+feria_del_libro: [
+  "feria-del-libro.png",
+  "explicacion5.png"
+],
+koaa: [
+  "koa-logo.png",
+  "explicacion10.png"
+],
+logo_torres: [
+  "logo-torres.png",
+  "explicacion3.png"
+],
+limon_logo: [
+  "limon-logo-idea.png",
+  "explicacion11.png"
+],
+coraza_logo: [
+  "coraza-logo.png",
+  "explicacion6.png"
+],
+calendario_ruben: [
+  "calendario-ruben-fontana-mockup.jpg",
+  "explicacion12.png"
+],
+mockup_libreta_ruben: [
+  "mockup-libreta_-ruben-fontana-copia.jpg",
+  "explicacion13.png"
+],
+packaging_koa_adulto: [
+  "packaging-koa-adulto.jpg",
+  "explicacion14.png"
+],
+packaging_koa_ninos: [
+  "packaging-koa-niños.jpg",
+  "explicacion15.png"
+],
+packaging_limonada: [
+  "packaging-limonada.jpg",
+  "explicacion16.png"
+],
+packaging_te: [
+  "packaging-te.jpg",
+  "explicacion17.png"
+],
+botella_etiqueta_hexagonal: [
+  "botella-etiqueta-hexagonal.jpg",
+  "explicacion18.png"
+]
+  };
+
+  const galeria = document.querySelector(".galeria-modal");
+  galeria.innerHTML = "";
+
+  const lista = imagenes[proyecto] || [proyecto];
+
+ lista.forEach((src, index) => {
+  const img = document.createElement("img");
+  img.src = src;
+
+  if (index === 0) {
+    img.classList.add("modal-img", "img-principal");
+  } else {
+    img.classList.add("img-secundaria");
+  }
+
+  galeria.appendChild(img);
+});
+
   document.getElementById("modal").style.display = "flex";
-  document.querySelector("#modal .modal-img").src = src;
 }
 </script>
 
