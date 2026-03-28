@@ -138,7 +138,6 @@ body {
   transform: scale(1.08);
 }
 
-/* ❗ TAMAÑOS Y POSICIONES TAL CUAL LOS TENÍAS */
 
 .t1 {
   width: 6%;
@@ -273,7 +272,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  position: relative;   /* 👈 CLAVE */
+  position: relative; 
   display: inline-block;
 }
 
@@ -286,7 +285,7 @@ body {
 
 /* imagen chica */
 .img-secundaria{
-  width: 300px;   /* 👈 usá px para control real */
+  width: 300px;  
   height: auto;
   margin-top: 50%;
   margin-bottom: 30%;
